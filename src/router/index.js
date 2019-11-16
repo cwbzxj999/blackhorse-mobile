@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
 
 const Layout = () => import('@/views/Layout')
 const Home = () => import('@/views/home/index')
@@ -37,6 +38,16 @@ const routes = [
 
 const router = new VueRouter({
   routes
+})
+
+// 访问权限控制（user下：个人中心/user,编辑资料/user/profile,小智同学/user/chat）
+router.beforeEach((to, from, next) => {
+  // 如果当前没有登录 且 访问的路径是以user开头 拦截到登录页面（回跳）
+  const user = store.state.user
+  if (!user.token && to.path.startsWith('/user')) {
+    return next({ path: '/login', query: { redirectUrl: to.path } })
+  }
+  next()
 })
 
 export default router

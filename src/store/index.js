@@ -1,3 +1,5 @@
+// vuex状态管理token
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -11,7 +13,7 @@ export default new Vuex.Store({
     user: auth.getUser()
   },
   mutations: {
-    // 存储用户信息
+    // 设置存储用户信息
     setUser (state, user) {
       // 更新state的状态
       state.user = user

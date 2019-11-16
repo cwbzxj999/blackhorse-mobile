@@ -5,7 +5,8 @@ import store from './store'
 
 // 导入移动端vue组件库
 import Vant from 'vant'
-import 'vant/lib/index.css'
+// import 'vant/lib/index.css'
+import 'vant/lib/index.less'
 
 // 自己的样式
 import '@/styles/index.less'
